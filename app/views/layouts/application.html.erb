@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TravelManagement</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="TravelManagement">
+	<h1 style="text-align: center;">Travel Management</h1>
+	<div class="container">
+		<div ng-view></div> 
+		<%= yield %>
+	</div>
+  
+  <script src="assets/angular-min.js"></script>
+  <script src="assets/angular-route-min.js"></script>
+  <script src="assets/app.js"></script>
+	<script src="assets/HomeCtrl.js"></script>
+	<script src="assets/CustomerCtrl.js"></script>
+</body>
+</html>

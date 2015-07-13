@@ -1,0 +1,141 @@
+</br>
+<h3>{{new_label}}</h3>
+<div class="row">
+  <div class="col-xs-12">
+		<form name="addCustomerform" ng-submit="addCustomer()" class= "form-horizontal">
+			<div class="form-body">
+
+			  <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Name:</label>
+		          <div class="col-md-6">
+		             <input class="form-control" type="text" ng-model="newCustomer.name" required />
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		   
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Age:</label>
+		          <div class="col-md-6">
+		             <input class="form-control" type="number" ng-model="newCustomer.age" required /></div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Description:</label>
+		          <div class="col-md-6">
+		             <textarea class="form-control" rows="4" cols="50"  ng-model="newCustomer.desc" required /></textarea>
+		             
+		           </div>
+		            
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Mobile number:</label>
+		          <div class="col-md-6">
+		             <input class="form-control" type="number" ng-model="newCustomer.mobileNo" required /></div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Type:</label>
+		          <div class="col-md-6">
+		          	<input type="radio" name="type" value="Corporate" ng-model="newCustomer.type" ng-change='customerType(newCustomer.type)'>
+		          	Corporate
+		          	&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="type" value="Regular" ng-model="newCustomer.type" ng-change='customerType(newCustomer.type)'>
+                Regular
+              </div>
+		           
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row" ng-if="lpsShow">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Loyal Program Subscribed:</label>
+		          <div class="col-md-6">
+		          	<input type="checkbox" name="lps" value="true" ng-model="newCustomer.lps">
+		          </div>
+		           
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Pickup Date:</label>
+		          <div class="col-md-6">
+		             <input type="date" class="form-control" ng-model="newCustomer.pickupDate" required /></div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Charges:</label>
+		          <div class="col-md-6">
+		            <input class="form-control" type="number" step="0.01" ng-model="newCustomer.charges" required /></div>
+		            per/km
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Number of Employees:</label>
+		          <div class="col-md-6">
+		             <input class="form-control" type="number" ng-disabled = "employeeDisabled" ng-model="newCustomer.employeeNumbers"></div>
+		        </div>
+		      </div>
+		    </div>
+
+		    <div class="row">
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3">Distance Travelled:</label>
+		          <div class="col-md-6">
+		             <input class="form-control" type="number" step="0.01" ng-model="newCustomer.distanceTravelled"></div>
+		        </div>
+		      </div>
+		    </div>
+
+		  
+		    
+		    <div class="row" >
+		      <div class="col-xs-9">
+		        <div class="form-group">
+		          <label class="col-md-3"></label>
+		          <div class="col-md-6">
+		            <button ng-if="showButtons" class="btn btn-primary">Save</button>
+                <button ng-if="showButtons" ng-click="reset()" class="btn btn-default">Reset</button>
+                <a href="#/" class="btn btn-default">Back To Home Screen</a>
+		        </div>
+		      </div>
+		    </div>
+
+			 
+			</div>
+
+		</form>
+	</div>
+</div>  

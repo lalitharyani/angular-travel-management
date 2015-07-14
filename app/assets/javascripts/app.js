@@ -8,7 +8,7 @@ app.config(['$routeProvider',
             templateUrl: '/angular_views/new.html',
             controller: 'CustomerCtrl'
         }).
-        when('/update/:id', {
+        when('/update/:updateId', {
               templateUrl: 'angular_views/new.html',
               controller: 'CustomerCtrl'
         }).

@@ -2,7 +2,7 @@
 <h3>{{new_label}}</h3>
 <div class="row">
   <div class="col-xs-12">
-		<form name="addCustomerform" ng-submit="addCustomer()" class= "form-horizontal">
+		<form name="addCustomerform" class= "form-horizontal">
 			<div class="form-body">
 
 			  <div class="row">
@@ -126,7 +126,7 @@
 		        <div class="form-group">
 		          <label class="col-md-3"></label>
 		          <div class="col-md-6">
-		            <button ng-if="showButtons" class="btn btn-primary">Save</button>
+		            <button ng-if="showButtons" class="btn btn-primary" ng-click="new_label == 'Update Customer' ? updateCustomer(customerId) : addCustomer()">Save</button>
                 <button ng-if="showButtons" ng-click="reset()" class="btn btn-default">Reset</button>
                 <a href="#/" class="btn btn-default">Back To Home Screen</a>
 		        </div>

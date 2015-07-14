@@ -6,13 +6,22 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
   $scope.employeeDisabled = true;
   $scope.new_label = "Add Customer";
   $scope.showButtons = true;
+  $scope.newCustomer = {};
 
-  if($routeParams.id){
-  	$scope.new_label = "Customer Details";
-    $scope.showButtons = false;
+  if($routeParams.id || $routeParams.updateId){
+
+    if($routeParams.id){
+    	$scope.new_label = "Customer Details";
+      var id = $routeParams.id;
+      $scope.showButtons = false;
+    }else if($routeParams.updateId){
+      $scope.new_label = "Update Customer";
+      var id = $routeParams.updateId;
+      $scope.customerId = id;
+    }
     
     //get the selected customer from localstorage
-    var newCustomer = localStorage.getItem("customer"+$routeParams.id);
+    var newCustomer = localStorage.getItem("customer"+id);
     if(newCustomer){
       $scope.newCustomer = angular.fromJson(newCustomer);
       ///convert back date into object
@@ -33,7 +42,7 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
 
 
 	// add New Customer
-  $scope.addCustomer= function() {  
+  $scope.addCustomer= function() { 
 
     // If all required fields are complete 
     if( !$scope.addCustomerform.$error.required ) { 
@@ -73,7 +82,30 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
   //reset all form fields
   $scope.reset= function(){
   	$scope.newCustomer = {};
-  }
+  };
+
+  // update existing Customer
+  $scope.updateCustomer= function(customerID) {
+
+    var newRequest = {};
+
+    // Store request data in an object         
+    newRequest = $scope.newCustomer;
+    newRequest["id"] = customerID;
+         
+    //If "distance travelled" filled then calculate the total charges
+    if(newRequest["distanceTravelled"]){
+      newRequest["totalCharges"] = calculateTotalCharges(newRequest);   
+    }
+
+    // Update Request object to localStorage as the value to a exisiting property
+    localStorage.setItem( 'customer' +customerID, JSON.stringify(newRequest) );
+
+    $scope.newCustomer = {};
+      
+    $location.path('/');
+
+  };
 
   ///calculate totalCharges on the basis of regaular / corporate customer
   function calculateTotalCharges(request){
@@ -112,6 +144,7 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
   	$scope.lpsShow = false;
 	  $scope.employeeDisabled = true;
 	  if(type == "Regular"){
+      $scope.newCustomer["employeeNumbers"] = "";
 	  	$scope.lpsShow = true;
 
 	  }else if(type == "Corporate"){

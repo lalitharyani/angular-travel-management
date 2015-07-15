@@ -12,7 +12,7 @@ app.config(['$routeProvider',
               templateUrl: 'angular_views/new.html',
               controller: 'CustomerCtrl'
         }).
-         when('/detail/:id', {
+        when('/detail/:id', {
               templateUrl: 'angular_views/new.html',
               controller: 'CustomerCtrl'
         }).

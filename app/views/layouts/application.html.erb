@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="assets/jasmine-2.2.0/jasmine.css" rel="stylesheet" />
 </head>
 <body ng-app="TravelManagement">
 	<h1 style="text-align: center;">Travel Management</h1>
@@ -16,7 +17,17 @@
   <script src="assets/angular-min.js"></script>
   <script src="assets/angular-route-min.js"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/TotalChargesFactory.js"></script>
 	<script src="assets/HomeCtrl.js"></script>
 	<script src="assets/CustomerCtrl.js"></script>
+  <!-- jasmine -->
+  <script type="text/javascript" src="assets/jasmine-2.2.0/jasmine.js"></script>
+ <!-- <script type="text/javascript" src="assets/jasmine-2.2.0/jasmine-html.js"></script>-->
+  <script type="text/javascript" src="assets/jasmine-2.2.0/console.js"></script>
+  <script type="text/javascript" src="assets/jasmine-2.2.0/boot.js"></script>
+
+  <script type="text/javascript" src="assets/angular-mocks.js"></script>
+  <script type="text/javascript" src="assets/unit-testing-specs.js"></script>
+
 </body>
 </html>

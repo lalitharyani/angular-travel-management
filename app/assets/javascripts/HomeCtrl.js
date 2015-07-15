@@ -21,7 +21,7 @@ app.controller('HomeCtrl', ['$scope', 'CustomerFactory', '$window', function($sc
       // Delete item from localStorage & customers array
       localStorage.removeItem("customer"+customerId);
 	    $scope.customers.splice(index, 1);
-	    $window.alert("Customer deleted successfully.");
+	    
 	  }
   };
 

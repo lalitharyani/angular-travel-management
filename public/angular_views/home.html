@@ -13,7 +13,7 @@
       <td> {{customer.name}}</td>
       <td>{{customer.type}}</td>
       <td>{{customer.desc}}</td>
-      <td>$ {{customer.totalCharges}}</td>
+      <td>{{customer.totalCharges | currency:"&#8377;"}}</td>
       <td> 
         <button ng-click="deleteCustomer(customer.id, $index)" class="btn btn-danger">Delete</button>
         <a href="#update/{{customer.id}}" class= "btn btn-primary">Update</a>&nbsp;&nbsp;

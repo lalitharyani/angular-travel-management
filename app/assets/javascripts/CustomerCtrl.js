@@ -45,7 +45,7 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
   $scope.addCustomer= function() { 
 
     // If all required fields are complete 
-    if( !$scope.addCustomerform.$error.required ) { 
+    //if( !$scope.addCustomerform.$error.required ) { 
 
       // Remove warning
       $scope.failed = '';
@@ -72,10 +72,10 @@ app.controller('CustomerCtrl', ['$scope', 'CustomerFactory', '$location', '$rout
       
       $location.path('/');
 
-    } else {
+    //} else {
         // Add warning
-        $scope.failed = 'All fields must be filled.';
-    }
+        //$scope.failed = 'All fields must be filled.';
+  //  }
 
   };
 

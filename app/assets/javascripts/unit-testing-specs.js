@@ -1,16 +1,68 @@
 //Test for CustomerCtrl
 describe('Controller: CustomerCtrl', function () {
 
-  var CustomerCtrl, scope;
+  var CustomerCtrl, scope, location, rootScope, customerID;
 
   beforeEach(module('TravelManagement'));
 
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($location, $controller, $rootScope) {
+    location = $location;
+    rootScope = $rootScope;
     scope = $rootScope.$new();
     CustomerCtrl = $controller('CustomerCtrl', {
       $scope: scope
     });
   }));
+
+
+  it('should create new customer Corporate Type on calling save button', function(){
+   
+    scope.newCustomer = {"name":"test","age":23,"desc":"testing","mobileNo":1213213190,"type":"Corporate","pickupDate":"12/12/2015","charges":20,"employeeNumbers":20,"distanceTravelled":20,
+  "totalCharges":"340.00"}
+    
+    scope.addCustomer();
+    scope.$apply();
+    expect(location.path()).toBe('/');
+    
+  });
+
+  it('should create new customer Regular Type on calling save button', function(){
+   
+    scope.newCustomer = {"name":"test","age":23,"desc":"testing","mobileNo":1213213190,"type":"Regular","pickupDate":"12/12/2015","charges":20,"distanceTravelled":20,
+    "totalCharges":"340.00"}
+    
+    scope.addCustomer();
+    scope.$apply();
+    expect(location.path()).toBe('/');
+    
+  });
+
+
+  it('should update existing Corporate customer on calling save button Update', function(){
+   
+    scope.newCustomer = {"name":"testCorporate","age":23,"desc":"testing","mobileNo":1213213190,"type":"Regular","pickupDate":"12/12/2015","charges":20,"distanceTravelled":20,
+    "totalCharges":"340.00"}
+
+    customerID = 1;
+    
+    scope.updateCustomer(customerID);
+    scope.$apply();
+    expect(location.path()).toBe('/');
+    
+  });
+
+  it('should update existing Regular customer on calling save button Update', function(){
+   
+    scope.newCustomer = {"name":"testRegular","age":23,"desc":"testing","mobileNo":1213213190,"type":"Regular","pickupDate":"12/12/2015","charges":20,"distanceTravelled":20,
+    "totalCharges":"340.00"}
+
+    customerID = 2;
+    
+    scope.updateCustomer(customerID);
+    scope.$apply();
+    expect(location.path()).toBe('/');
+    
+  });
   
 
   it('should reset customer fields on calling reset button', function(){
@@ -73,35 +125,3 @@ describe('Factory: CustomerFactory', function () {
     });
   
 });
-
-
-
-/*describe('Controller: HomeCtrl', function () {
-
-  var HomeCtrl, scope, customerId, index, window;
-
-  beforeEach(module('TravelManagement'));
-
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    var windowMock = { confirm: function(msg) { return true } }
-    HomeCtrl = $controller('HomeCtrl', {$scope: scope, $window: windowMock});
-  }));
-
-
-  it('Delete a customer', function(){
-    
-    customerId = 1;
-    index = 0;
-    
-    scope.deleteCustomer();
-    scope.$digest();
-    expect(scope.newCustomer).toEqual({});
-    
-  });   
-
-
-});*/
-
-
-

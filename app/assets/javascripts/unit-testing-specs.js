@@ -1,3 +1,4 @@
+//Test for CustomerCtrl
 describe('Controller: CustomerCtrl', function () {
 
   var CustomerCtrl, scope;
@@ -23,8 +24,56 @@ describe('Controller: CustomerCtrl', function () {
     
   });   
 
-
 });
+
+///Test for TotalChargesFactory
+describe('Factory: TotalChargesFactory', function () {
+
+    beforeEach(module('TravelManagement'));
+    var fct;
+
+    beforeEach(inject(function (_TotalChargesFactory_) {
+        fct = _TotalChargesFactory_;
+    }));
+
+    it('should return Total Charges 400.00, Regular Customer && Not loyal customer', function () {
+      var data = {"type":"Regular", "charges":20,"distanceTravelled":20};
+       expect(fct.calculate(data)).toEqual("400.00");
+    });
+
+    it('should return Total Charges 380.00, Regular Customer && loyal customer', function () {
+      var data = {"type":"Regular", "charges":20,"lps":true,"distanceTravelled":20};
+       expect(fct.calculate(data)).toEqual("380.00");
+    });
+
+    it('should return Total Charges 340.00, Corporate Customer && No of employees more than 10', function () {
+      var data = {"type":"Corporate", "charges":20,"employeeNumbers":20,"distanceTravelled":20};
+       expect(fct.calculate(data)).toEqual("340.00");
+    });
+
+    it('should return Total Charges 360.00, Corporate Customer && No of employees less than 10', function () {
+      var data = {"type":"Corporate", "charges":20,"employeeNumbers":5,"distanceTravelled":20};
+       expect(fct.calculate(data)).toEqual("360.00");
+    });
+  
+});
+
+///Test for CustomerFactory
+describe('Factory: CustomerFactory', function () {
+
+    beforeEach(module('TravelManagement'));
+    var fct;
+
+    beforeEach(inject(function (_CustomerFactory_) {
+        fct = _CustomerFactory_;
+    }));
+
+    it('should return Array object', function () {
+       expect(fct).toEqual([]);
+    });
+  
+});
+
 
 
 /*describe('Controller: HomeCtrl', function () {

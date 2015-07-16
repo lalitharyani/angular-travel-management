@@ -23,7 +23,7 @@ app.config(['$routeProvider',
   }]);
 
 
-//define vehicle factory 
+//define Customer factory 
 app.factory('CustomerFactory', function () {
   return [];    // Return an array
 });
